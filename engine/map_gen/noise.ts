@@ -35,6 +35,7 @@ function create_permutation_table(random: () => number): Uint8Array {
 }
 
 function simplex_noise(xin: number, yin: number, perm: Uint8Array): number {
+  // https://weber.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf
   let n0, n1, n2;
 
   const F2 = 0.5 * (Math.sqrt(3) - 1);
