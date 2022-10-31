@@ -94,3 +94,4 @@ function create_noise_function(random = Math.random) {
 }
 
 export default create_noise_function;
+export { simplex_noise, create_permutation_table };
