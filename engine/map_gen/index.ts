@@ -23,3 +23,4 @@ function gen_opinionated_noise_map(width: number, height: number): NoiseMap {
 }
 
 export { gen_opinionated_noise_map };
+export type { NoiseMap };

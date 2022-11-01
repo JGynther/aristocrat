@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { gen_opinionated_noise_map } from "engine/map_gen";
+  import { gen_opinionated_noise_map, type NoiseMap } from "engine/map_gen";
   import { canvas_draw_grid } from "$lib/canvas";
   import { onMount } from "svelte";
 
@@ -7,17 +7,17 @@
   const width = 600;
 
   let canvas: HTMLCanvasElement;
-  let noise_map = gen_opinionated_noise_map(width, height);
+  let noise_map: NoiseMap;
 
-  function regenerate() {
+  function generate() {
     noise_map = gen_opinionated_noise_map(width, height);
     canvas_draw_grid(canvas, noise_map);
   }
 
   onMount(() => {
-    canvas_draw_grid(canvas, noise_map);
+    generate();
   });
 </script>
 
 <canvas id="canvas" bind:this={canvas} width={width * 2} height={height * 2} />
-<button on:click={regenerate}>Regenerate map</button>
+<button on:click={generate}>Regenerate map</button>
