@@ -1,4 +1,4 @@
-function draw_canvas_grid(canvas: HTMLCanvasElement, grid: number[][]) {
+function canvas_draw_grid(canvas: HTMLCanvasElement, grid: number[][]) {
   const context = canvas.getContext("2d");
 
   if (!context) return;
@@ -12,4 +12,4 @@ function draw_canvas_grid(canvas: HTMLCanvasElement, grid: number[][]) {
   }
 }
 
-export default draw_canvas_grid;
+export { canvas_draw_grid };
