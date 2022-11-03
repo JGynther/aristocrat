@@ -17,7 +17,7 @@ function dot(g: number[], x: number, y: number) {
   return g[0] * x + g[1] * y;
 }
 
-function create_permutation_table(random: () => number): Uint8Array {
+function create_permutation_table(random: () => number = Math.random): Uint8Array {
   const p = new Uint8Array(256);
   for (let i = 0; i < 256; ++i) p[i] = i;
 
@@ -85,7 +85,8 @@ function simplex_noise(xin: number, yin: number, perm: Uint8Array): number {
     n2 = t2 * t2 * dot(GRAD3[gi2], x2, y2);
   }
 
-  return 70.0 * (n0 + n1 + n2);
+  //return 70.0 * (n0 + n1 + n2);
+  return (70.0 * (n0 + n1 + n2)) / 2 + 0.5; // return value in [0, 1] instead of [-1, 1]
 }
 
 function create_noise_function(random = Math.random) {
