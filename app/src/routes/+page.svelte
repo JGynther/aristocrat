@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { gen_opinionated_noise_map, type NoiseMap } from "engine/map_gen";
+  import { gen_noise_map, type NoiseMap } from "engine/map_gen";
+  import { create_permutation_table } from "engine/map_gen/noise";
   import { canvas_draw_grid } from "$lib/canvas";
   import { onMount } from "svelte";
 
@@ -8,9 +9,11 @@
 
   let canvas: HTMLCanvasElement;
   let noise_map: NoiseMap;
+  let permutation_table: Uint8Array;
 
   function generate() {
-    noise_map = gen_opinionated_noise_map(width, height);
+    permutation_table = create_permutation_table();
+    noise_map = gen_noise_map(width, height, 16, 0.01, permutation_table);
     canvas_draw_grid(canvas, noise_map);
   }
 
