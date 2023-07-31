@@ -19,6 +19,6 @@ def generate(prompt: str, seed: int = None, batch: int = 1):
     return ids
 
 
-@app.get("/images/{id}")
+@app.get("/image/{id}")
 def get_image(id):
     return FileResponse(f"images/{id}.jpeg")
