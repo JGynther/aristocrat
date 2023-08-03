@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from generate import generateImage
+from generate import generateImage, generateImageFast
 
 app = FastAPI()
 
@@ -18,6 +18,10 @@ def generate(prompt: str, seed: int = None, batch: int = 1):
 
     return ids
 
+@app.get("/generate/fast")
+def generate(prompt: str, seed: int = None):
+    id = generateImageFast(prompt, seed)
+    return [id]
 
 @app.get("/image/{id}")
 def get_image(id):
